@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bsv5pwfquqiai"]
+
+[ext_resource type="Texture2D" uid="uid://do8wqc4hlmmay" path="res://assets/ui/tab_panel.png" id="1_r8ppq"]
+[ext_resource type="Texture2D" uid="uid://dko1ci0mrhx1e" path="res://assets/ui/tab_disable.png" id="2_vxm28"]
+[ext_resource type="Texture2D" uid="uid://66hkpyihnibe" path="res://assets/ui/tab_focus.png" id="3_3jtqa"]
+[ext_resource type="Texture2D" uid="uid://dij2m2l6wgner" path="res://assets/ui/tab_selected.png" id="4_5kud2"]
+[ext_resource type="Texture2D" uid="uid://exa418nutixb" path="res://assets/ui/tab_unselected.png" id="5_najpk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7642k"]
+texture = ExtResource("1_r8ppq")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 11.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1hx6"]
+texture = ExtResource("2_vxm28")
+texture_margin_left = 8.0
+texture_margin_top = 11.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dg45h"]
+texture = ExtResource("3_3jtqa")
+texture_margin_left = 8.0
+texture_margin_top = 11.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqe2l"]
+texture = ExtResource("4_5kud2")
+texture_margin_left = 8.0
+texture_margin_top = 11.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jpii0"]
+texture = ExtResource("4_5kud2")
+texture_margin_left = 8.0
+texture_margin_top = 11.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kif3n"]
+texture = ExtResource("5_najpk")
+texture_margin_left = 8.0
+texture_margin_top = 11.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[resource]
+TabContainer/styles/panel = SubResource("StyleBoxTexture_7642k")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxTexture_l1hx6")
+TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_dg45h")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_bqe2l")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_jpii0")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_kif3n")

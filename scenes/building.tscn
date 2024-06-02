@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dofw8jl4fwiqy"]
+
+[ext_resource type="Script" path="res://scripts/building.gd" id="1_h55e1"]
+[ext_resource type="Texture2D" uid="uid://clpsf8yyk1ixy" path="res://assets/no_image.png" id="2_gbke1"]
+[ext_resource type="Script" path="res://resources/building.gd" id="2_oha53"]
+
+[sub_resource type="Resource" id="Resource_ahmtw"]
+script = ExtResource("2_oha53")
+b_id = "missing"
+b_name = "missing"
+b_description = "missing"
+b_img = "res://assets/no_image.png"
+b_type = "base"
+b_maxhp = 0
+
+[node name="building" type="Node2D"]
+position = Vector2(568, 308)
+script = ExtResource("1_h55e1")
+res = SubResource("Resource_ahmtw")
+
+[node name="image" type="TextureButton" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+texture_normal = ExtResource("2_gbke1")
+
+[connection signal="pressed" from="image" to="." method="_on_image_pressed"]

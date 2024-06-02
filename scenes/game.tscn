@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj746t7cyly4i"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_eytvh"]
+[ext_resource type="Texture2D" uid="uid://c0vatb2gwpv8l" path="res://assets/ui/zoom_button.png" id="2_ek5kb"]
+[ext_resource type="Texture2D" uid="uid://cymp2skuarsr5" path="res://assets/ui/zoom_bar.png" id="2_hn58o"]
+[ext_resource type="Script" path="res://scripts/zoom_button.gd" id="4_wre5j"]
+[ext_resource type="Texture2D" uid="uid://d2kf2uquo1mok" path="res://assets/ui/hp.png" id="5_hvuvn"]
+[ext_resource type="Texture2D" uid="uid://b8iockrj2i2qs" path="res://assets/ui/coin.png" id="6_pp32v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfitp"]
+bg_color = Color(0, 0, 0, 0.321569)
+border_width_left = 10
+border_color = Color(1, 1, 1, 0.423529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhmxc"]
+bg_color = Color(0.13, 0.13, 0.13, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gdwr"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_b078y"]
+font_size = 32
+
+[node name="game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eytvh")
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="setting" type="ScrollContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfitp")
+
+[node name="contain" type="VBoxContainer" parent="UI/setting"]
+layout_mode = 2
+
+[node name="zoom" type="Control" parent="UI"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.1
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="bar" type="Sprite2D" parent="UI/zoom"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_hn58o")
+
+[node name="button" type="TextureButton" parent="UI/zoom"]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -48.0
+offset_bottom = -48.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("2_ek5kb")
+script = ExtResource("4_wre5j")
+
+[node name="menubar" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.1
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xhmxc")
+
+[node name="info_FPS" type="MarginContainer" parent="UI/menubar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 1.0
+offset_left = 10.0
+grow_vertical = 2
+
+[node name="FPS" type="Label" parent="UI/menubar/info_FPS"]
+layout_mode = 2
+text = "FPS:60"
+label_settings = SubResource("LabelSettings_0gdwr")
+
+[node name="hpbar" type="MarginContainer" parent="UI/menubar"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.25
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+
+[node name="Hbox" type="HBoxContainer" parent="UI/menubar/hpbar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="hp_icon" type="TextureRect" parent="UI/menubar/hpbar/Hbox"]
+layout_mode = 2
+texture = ExtResource("5_hvuvn")
+stretch_mode = 3
+
+[node name="hp" type="Label" parent="UI/menubar/hpbar/Hbox"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_b078y")
+
+[node name="coinbar" type="MarginContainer" parent="UI/menubar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.4
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+
+[node name="Hbox" type="HBoxContainer" parent="UI/menubar/coinbar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="coin_icon" type="TextureRect" parent="UI/menubar/coinbar/Hbox"]
+layout_mode = 2
+texture = ExtResource("6_pp32v")
+stretch_mode = 3
+
+[node name="coin" type="Label" parent="UI/menubar/coinbar/Hbox"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_b078y")
+
+[connection signal="button_down" from="UI/zoom/button" to="UI/zoom/button" method="_on_button_down"]
+[connection signal="button_up" from="UI/zoom/button" to="UI/zoom/button" method="_on_button_up"]

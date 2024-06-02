@@ -1,0 +1,114 @@
+[gd_scene load_steps=16 format=3 uid="uid://dk365lvtbuv0t"]
+
+[ext_resource type="Script" path="res://scripts/preloader.gd" id="1_p7eso"]
+[ext_resource type="Script" path="res://resources/tiled.gd" id="2_ynepn"]
+[ext_resource type="Script" path="res://resources/building.gd" id="3_ux07b"]
+[ext_resource type="Script" path="res://resources/enemy.gd" id="4_oat2n"]
+[ext_resource type="Script" path="res://resources/turret.gd" id="5_r4uwh"]
+[ext_resource type="Script" path="res://resources/weapon.gd" id="6_87hei"]
+[ext_resource type="Texture2D" uid="uid://bnps82ejkruun" path="res://assets/core.png" id="7_i7f4h"]
+[ext_resource type="Texture2D" uid="uid://87q1t80bi126" path="res://assets/core_normal.png" id="8_1fixf"]
+
+[sub_resource type="Resource" id="Resource_ga6m0"]
+script = ExtResource("2_ynepn")
+t_id = ""
+t_name = ""
+t_img = "res://assets/no_image.png"
+t_type = ""
+
+[sub_resource type="Resource" id="Resource_2x3hi"]
+script = ExtResource("3_ux07b")
+b_id = ""
+b_name = ""
+b_description = ""
+b_img = "res://assets/no_image.png"
+b_type = ""
+b_maxhp = 0
+
+[sub_resource type="Resource" id="Resource_q4qfj"]
+script = ExtResource("4_oat2n")
+e_id = ""
+e_name = ""
+e_description = ""
+e_img = "res://assets/no_image.png"
+e_movetype = ""
+e_hp = 0
+e_shield = 0
+e_armor = 0
+e_attack = 0
+e_speed = 0.0
+
+[sub_resource type="Resource" id="Resource_5t4dw"]
+script = ExtResource("5_r4uwh")
+t_id = ""
+t_name = ""
+t_description = ""
+t_img = "res://assets/no_image.png"
+t_type = ""
+t_price = 0.0
+t_weapon = ""
+
+[sub_resource type="Resource" id="Resource_25g6d"]
+script = ExtResource("6_87hei")
+w_id = ""
+w_name = ""
+w_img = "res://assets/no_image.png"
+w_bullet = {}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_drji2"]
+diffuse_texture = ExtResource("7_i7f4h")
+normal_texture = ExtResource("8_1fixf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptb7x"]
+
+[node name="preloader" type="Node2D"]
+script = ExtResource("1_p7eso")
+tiled_pre = SubResource("Resource_ga6m0")
+building_pre = SubResource("Resource_2x3hi")
+enemy_pre = SubResource("Resource_q4qfj")
+turret_pre = SubResource("Resource_5t4dw")
+weapon_pre = SubResource("Resource_25g6d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -500.0
+offset_right = 1000.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="icon" type="Sprite2D" parent="."]
+position = Vector2(0, -150)
+scale = Vector2(5, 5)
+texture = SubResource("CanvasTexture_drji2")
+
+[node name="pos" type="Camera2D" parent="."]
+
+[node name="text" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = 244.0
+offset_right = 512.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_ptb7x")
+
+[node name="environment" type="CanvasModulate" parent="."]
+color = Color(0.546688, 0.546688, 0.546688, 1)
+
+[node name="light" type="DirectionalLight2D" parent="."]
+energy = 0.5
+shadow_color = Color(1, 1, 1, 0)
+shadow_filter = 1
+height = 0.5
